@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Tables</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Multiplication Tables</h1>
+
+  <table id="multiplicationTable">
+    <!-- Table will be dynamically populated by JavaScript -->
+  </table>
+
+  <script>
+    // Function to generate multiplication table row-wise
+    function generateMultiplicationTable(row) {
+      let tableRow = '<tr>';
+      for (let i = 2; i <= 10; i++) {
+        tableRow += `<td>${i} x ${row} = ${i * row}</td>`;
+      }
+      tableRow += '</tr>';
+      return tableRow;
+    }
+
+    // Function to update the table with a new row every 5 seconds
+    function updateTable() {
+      const table = document.getElementById('multiplicationTable');
+      let currentRow = 1;
+
+      // Use setInterval to update the table every 5 seconds
+      const intervalId = setInterval(() => {
+        // Generate the table row
+        const newRow = generateMultiplicationTable(currentRow);
+
+        // Add the new row to the table
+        table.innerHTML += newRow;
+
+        // Increase font size and apply different color to each row
+        const rows = table.getElementsByTagName('tr');
+        const lastRow = rows[rows.length - 1];
+        lastRow.style.fontSize = `${10 + currentRow}px`;
+        lastRow.style.color = getRandomColor();
+
+        // Increment the row for the next iteration
+        currentRow++;
+
+        // Clear interval after 10 rows
+        if (currentRow > 10) {
+          clearInterval(intervalId);
+        }
+      }, 5000); // 5000 milliseconds = 5 seconds
+
+      // Function to generate a random color
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    }
+
+    // Start updating the table
+    updateTable();
+  </script>
+
+</body>
+</html>

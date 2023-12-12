@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Bootstrap</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    .image-container {
+      margin-top: 20px;
+    }
+
+    .image-card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="text-center">Image Gallery</h1>
+
+    <div class="row image-container">
+      <!-- Image 1 -->
+      <div class="col-lg-4 col-md-6 col-sm-12 image-card">
+        <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="Image 1">
+      </div>
+
+      <!-- Image 2 -->
+      <div class="col-lg-4 col-md-6 col-sm-12 image-card">
+        <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="Image 2">
+      </div>
+
+      <!-- Image 3 -->
+      <div class="col-lg-4 col-md-6 col-sm-12 image-card">
+        <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="Image 3">
+      </div>
+
+      <!-- Add more images as needed -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

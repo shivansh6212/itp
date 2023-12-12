@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Information</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #4CAF50;
+    }
+
+    #petContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .petCard {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .petCard h2 {
+      color: #333;
+    }
+
+    .petCard p {
+      color: #555;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pet Information</h1>
+
+  <div id="petContainer">
+    <!-- Pet data will be dynamically populated by JavaScript -->
+  </div>
+
+  <script>
+    // Use AJAX to load data from the JSON file
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        const petsData = JSON.parse(xhr.responseText);
+        displayPets(petsData);
+      }
+    };
+    xhr.open('GET', 'pets.json', true);
+    xhr.send();
+
+    // Function to display pet data on the page
+    function displayPets(pets) {
+      const petContainer = document.getElementById('petContainer');
+
+      pets.forEach(pet => {
+        const petCard = document.createElement('div');
+        petCard.className = 'petCard';
+
+        const petName = document.createElement('h2');
+        petName.textContent = pet.name;
+
+        const petDetails = document.createElement('p');
+        petDetails.innerHTML = `<strong>Age:</strong> ${pet.age}<br>
+                                <strong>Weight:</strong> ${pet.weight} kg<br>
+                                <strong>Type:</strong> ${pet.type}<br>
+                                <strong>Likes:</strong> ${pet.likes}`;
+
+        petCard.appendChild(petName);
+        petCard.appendChild(petDetails);
+
+        petContainer.appendChild(petCard);
+      });
+    }
+  </script>
+
+</body>
+</html>
